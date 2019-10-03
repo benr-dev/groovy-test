@@ -1,7 +1,10 @@
 package org.example;
 
 public class BowlingGame {
-    private int[] scores = new int[21];
+    public static final int MAX_ROLLS_IN_GAME = 21;
+    public static final int MAX_FRAMES_IN_GAME = 10;
+
+    private int[] scores = new int[MAX_ROLLS_IN_GAME];
     private int rollNumber = 0;
 
     public void roll(int ... rolls) {
@@ -14,24 +17,40 @@ public class BowlingGame {
         int sum = 0;
         int roll = 0;
 
-        for(int frame = 1; frame <= 10; frame++) {
-            if(scores[roll] == 10) {
-                sum += 10 + scores[roll+1] + scores[roll+2];
+        for(int frame = 1; frame <= MAX_FRAMES_IN_GAME; frame++) {
+            if(isAStrike(roll)) {
+                sum += getStrikeScore(roll);
                 roll += 1;
             }
             else if(isASpare(roll)) {
-                sum += 10 + scores[roll + 2];
+                sum += getSpareScore(roll);
                 roll += 2;
             }
             else {
-                sum += scores[roll] + scores[roll+1];
+                sum += getRegularFrameScore(roll);
                 roll += 2;
             }
         }
         return sum;
     }
 
+    private int getSpareScore(int roll) {
+        return 10 + scores[roll+2];
+    }
+
+    private int getStrikeScore(int roll) {
+        return 10 + getRegularFrameScore(roll+1);
+    }
+
+    private int getRegularFrameScore(int roll) {
+        return scores[roll] + scores[roll+1];
+    }
+
+    private boolean isAStrike(int roll) {
+        return scores[roll] == 10;
+    }
+
     private boolean isASpare(int roll) {
-        return scores[roll] + scores[roll+1] == 10;
+        return getRegularFrameScore(roll) == 10;
     }
 }
