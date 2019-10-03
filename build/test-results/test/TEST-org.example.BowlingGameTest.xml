@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.BowlingGameTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-10-03T18:16:06" hostname="devbox" time="0.258">
+  <properties/>
+  <testcase name="when_gutterGame_then_zeroScore" classname="org.example.BowlingGameTest" time="0.218"/>
+  <testcase name="when_maximumGame_then_scoreIs300" classname="org.example.BowlingGameTest" time="0.003"/>
+  <testcase name="when_all1sGame_then_scoreIs20" classname="org.example.BowlingGameTest" time="0.006"/>
+  <testcase name="when_aStrikeThen3Then3_then_scoreIs22" classname="org.example.BowlingGameTest" time="0.006"/>
+  <testcase name="when_aSpareThen3_then_scoreIs16" classname="org.example.BowlingGameTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
